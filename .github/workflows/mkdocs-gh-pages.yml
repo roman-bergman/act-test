@@ -36,9 +36,6 @@ jobs:
       - name: Install dependencies
         run: |
           pip install -r requirements.txt
-
-      - name: Pip freeze
-        run: pip freeze
           
       - name: Build site
         run: mkdocs build
@@ -46,6 +43,7 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
+          name: mkdocs-site
           path: ./site
           
   deploy:
@@ -56,5 +54,5 @@ jobs:
         id: deployment
         uses: actions/deploy-pages@v4
     environment:
-      name: github-pages
+      name: mkdocs-site
       url: ${{ steps.deployment.outputs.page_url }}
