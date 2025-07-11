@@ -35,7 +35,10 @@ jobs:
             
       - name: Install dependencies
         run: |
-          pip install mkdocs
+          pip install -r requirements.txt
+
+      - name: Pip freeze
+        run: pip freeze
           
       - name: Build site
         run: mkdocs build
